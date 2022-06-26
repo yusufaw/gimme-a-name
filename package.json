@@ -1,0 +1,19 @@
+{
+  "name": "gimme-a-name",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusufaw/gimme-a-name.git"
+  },
+  "author": "Yusuf Aji Wibowo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yusufaw/gimme-a-name/issues"
+  },
+  "homepage": "https://github.com/yusufaw/gimme-a-name#readme"
+}
