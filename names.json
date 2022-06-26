@@ -1,16 +1,21 @@
 {
     "names": [
-        "Joyce Byers",
-        "Jim Hopper",
-        "Dustin Henderson",
-        "Mike Wheeler",
-        "Nancy Wheeler",
-        "Jonathan Byers",
-        "Will Byers",
-        "Max Mayfield",
-        "Steve Harrington",
-        "Robin Buckley",
-        "Erica Sinclair",
-        "Murray Bauman"
+        {
+            "movie": "Stranger Things",
+            "characters": [
+                "Joyce Byers",
+                "Jim Hopper",
+                "Dustin Henderson",
+                "Mike Wheeler",
+                "Nancy Wheeler",
+                "Jonathan Byers",
+                "Will Byers",
+                "Max Mayfield",
+                "Steve Harrington",
+                "Robin Buckley",
+                "Erica Sinclair",
+                "Murray Bauman"
+            ]
+        }
     ]
 }
