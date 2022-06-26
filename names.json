@@ -16,6 +16,15 @@
                 "Erica Sinclair",
                 "Murray Bauman"
             ]
+        },
+        {
+            "movie": "Atypical",
+            "characters":[
+                "Sam Gardner",
+                "Casey Gardner",
+                "Zahid",
+                "Paige"
+            ]
         }
     ]
 }
