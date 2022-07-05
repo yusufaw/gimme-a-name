@@ -33,6 +33,14 @@
                 "John Moore",
                 "Sara Howard"
             ]
+        },{
+            "movie":"Breaking Bad",
+            "characters":[
+                "Walter White",
+                "Jesse Pinkman",
+                "Gus Fring",
+                "Saul Goodman"
+            ]
         }
     ]
 }
