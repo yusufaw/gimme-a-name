@@ -13,6 +13,7 @@ app.get('/', function (req, res) {
         const randomMovie = between(0, result.names.length - 1);
         const randomcharacter = between(0, result.names[randomMovie].characters.length - 1);
         const nameResult = result.names[randomMovie].characters[randomcharacter];
+        console.log(nameResult);
         res.send(nameResult);
     })
 });
