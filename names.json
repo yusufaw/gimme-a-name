@@ -41,6 +41,16 @@
                 "Gus Fring",
                 "Saul Goodman"
             ]
+        },
+        {
+            "movie": "The Good Place",
+            "characters":[
+                "Eleanor Shellstrop",
+                "Tahani Al-Jamil",
+                "Jason Mendoza",
+                "Chidi Anagonye",
+                "Janet"
+            ]
         }
     ]
 }
