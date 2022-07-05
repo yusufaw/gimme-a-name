@@ -25,6 +25,14 @@
                 "Zahid",
                 "Paige"
             ]
+        },
+        {
+            "movie": "The Alienist",
+            "characters":[
+                "Laszlo Kreizler",
+                "John Moore",
+                "Sara Howard"
+            ]
         }
     ]
 }
