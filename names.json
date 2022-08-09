@@ -51,6 +51,14 @@
                 "Chidi Anagonye",
                 "Janet"
             ]
+        },
+        {
+            "movie": "Narcos",
+            "characters":[
+                "Javier Peña",
+                "Steve Murphy",
+                "Pablo Escobar"
+            ]
         }
     ]
 }
