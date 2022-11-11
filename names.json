@@ -69,7 +69,7 @@
             ]
         },
         {
-            "book": "Good Witch",
+            "movie": "Good Witch",
             "characters":[
                 "Cassie Nightingale",
                 "Sam Radford",
@@ -79,6 +79,15 @@
                 "Abigail Pershing",
                 "Brandon Russell",
                 "Stephanie Borden"
+            ]
+        },
+        {
+            "movie": "SPY×FAMILY",
+            "characters":[
+                "Loid Forger",
+                "Yor Forger",
+                "Anya Forger",
+                "Yuri Briar"
             ]
         }
     ]
