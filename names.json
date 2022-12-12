@@ -94,6 +94,21 @@
                 "Sylvia Sherwood",
                 "Henry Henderson"
             ]
+        },
+        {
+            "movie": "Wednesday",
+            "characters":[
+                "Wednesday Addams",
+                "Valerie Kinbott",
+                "Larissa Weems",
+                "Xavier Thorpe",
+                "Bianca Barclay",
+                "Enid Sinclair",
+                "Tyler Galpin",
+                "Eugene Otinger",
+                "Marilyn Thornhill"
+            ],
+            "reference": "https://www.imdb.com/title/tt13443470/"
         }
     ]
 }
