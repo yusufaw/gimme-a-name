@@ -109,6 +109,19 @@
                 "Marilyn Thornhill"
             ],
             "reference": "https://www.imdb.com/title/tt13443470/"
+        },
+        {
+            "movie": "Alice in Borderland",
+            "characters":[
+                "Ryohei Arisu",
+                "Yuzuha Usagi",
+                "Shuntaro Chishiya",
+                "Ann Rizuna",
+                "Akane Heiya",
+                "Ginji Kyuma",
+                "Hikari Kuina"
+            ],
+            "reference": "https://www.imdb.com/title/tt10795658/"
         }
     ]
 }
