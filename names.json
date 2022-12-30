@@ -122,6 +122,15 @@
                 "Hikari Kuina"
             ],
             "reference": "https://www.imdb.com/title/tt10795658/"
+        },
+        {
+            "book": "Matilda",
+            "characters":[
+                "Matilda Wormwood",
+                "Jennifer Honey",
+                "Agatha Trunchbull"
+            ],
+            "reference": "https://en.wikipedia.org/wiki/Matilda_(novel)"
         }
     ]
 }
