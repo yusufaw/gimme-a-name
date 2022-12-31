@@ -131,6 +131,19 @@
                 "Agatha Trunchbull"
             ],
             "reference": "https://en.wikipedia.org/wiki/Matilda_(novel)"
+        },
+        {
+            "book": "Flipped",
+            "characters":[
+                "Juli Baker",
+                "Bryce Loski",
+                "Richard Baker",
+                "Chet Duncan",
+                "Trina Baker",
+                "Steven Loski",
+                "Patsy Loski"
+            ],
+            "reference": "https://www.goodreads.com/book/show/331920.Flipped"
         }
     ]
 }
