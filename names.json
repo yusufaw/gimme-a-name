@@ -144,6 +144,15 @@
                 "Patsy Loski"
             ],
             "reference": "https://www.goodreads.com/book/show/331920.Flipped"
+        },
+        {
+            "book": "Captain Underpants",
+            "characters":[
+                "George Beard",
+                "Harold Hutchins",
+                "Benjamin Krupp"
+            ],
+            "reference": "https://en.wikipedia.org/wiki/Captain_Underpants"
         }
     ]
 }
