@@ -44,6 +44,17 @@
             ]
         },
         {
+            "movie": "Better Call Saul",
+            "characters": [
+                "Jimmy McGill",
+                "Mike Ehrmantraut",
+                "Kim Wexler",
+                "Howard Hamlin",
+                "Chuck McGill"
+            ],
+            "reference": "https://en.wikipedia.org/wiki/Better_Call_Saul"
+        },
+        {
             "movie": "The Good Place",
             "characters": [
                 "Eleanor Shellstrop",
