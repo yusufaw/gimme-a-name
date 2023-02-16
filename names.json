@@ -19,7 +19,7 @@
         },
         {
             "movie": "Atypical",
-            "characters":[
+            "characters": [
                 "Sam Gardner",
                 "Casey Gardner",
                 "Zahid",
@@ -28,14 +28,15 @@
         },
         {
             "movie": "The Alienist",
-            "characters":[
+            "characters": [
                 "Laszlo Kreizler",
                 "John Moore",
                 "Sara Howard"
             ]
-        },{
-            "movie":"Breaking Bad",
-            "characters":[
+        },
+        {
+            "movie": "Breaking Bad",
+            "characters": [
                 "Walter White",
                 "Jesse Pinkman",
                 "Gus Fring",
@@ -44,7 +45,7 @@
         },
         {
             "movie": "The Good Place",
-            "characters":[
+            "characters": [
                 "Eleanor Shellstrop",
                 "Tahani Al-Jamil",
                 "Jason Mendoza",
@@ -54,7 +55,7 @@
         },
         {
             "movie": "Narcos",
-            "characters":[
+            "characters": [
                 "Javier Peña",
                 "Steve Murphy",
                 "Pablo Escobar"
@@ -62,7 +63,7 @@
         },
         {
             "book": "House of Robots",
-            "characters":[
+            "characters": [
                 "Sammy Hayes-Rodriguez",
                 "Cooper Elliot",
                 "Harry Hunter Hudson"
@@ -70,7 +71,7 @@
         },
         {
             "movie": "Good Witch",
-            "characters":[
+            "characters": [
                 "Cassie Nightingale",
                 "Sam Radford",
                 "Martha Tinsdale",
@@ -83,7 +84,7 @@
         },
         {
             "movie": "SPY×FAMILY",
-            "characters":[
+            "characters": [
                 "Loid Forger",
                 "Yor Forger",
                 "Anya Forger",
@@ -97,7 +98,7 @@
         },
         {
             "movie": "Wednesday",
-            "characters":[
+            "characters": [
                 "Wednesday Addams",
                 "Valerie Kinbott",
                 "Larissa Weems",
@@ -112,7 +113,7 @@
         },
         {
             "movie": "Alice in Borderland",
-            "characters":[
+            "characters": [
                 "Ryohei Arisu",
                 "Yuzuha Usagi",
                 "Shuntaro Chishiya",
@@ -125,7 +126,7 @@
         },
         {
             "book": "Matilda",
-            "characters":[
+            "characters": [
                 "Matilda Wormwood",
                 "Jennifer Honey",
                 "Agatha Trunchbull"
@@ -134,7 +135,7 @@
         },
         {
             "book": "Flipped",
-            "characters":[
+            "characters": [
                 "Juli Baker",
                 "Bryce Loski",
                 "Richard Baker",
@@ -147,7 +148,7 @@
         },
         {
             "book": "Captain Underpants",
-            "characters":[
+            "characters": [
                 "George Beard",
                 "Harold Hutchins",
                 "Benjamin Krupp"
