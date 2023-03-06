@@ -169,7 +169,7 @@
         {
             "movie": "The Full-Time Wife Escapist",
             "characters": [
-                "Mikuri Moriyama ",
+                "Mikuri Moriyama",
                 "Hiramasa Tsuzaki",
                 "Yoritsuna Numata",
                 "Tochio Moriyama",
@@ -177,6 +177,16 @@
                 "Ryota Kazami"
             ],
             "reference": "https://asianwiki.com/The_Full-Time_Wife_Escapist"
+        },
+        {
+            "movie": "I'm Your Destiny",
+            "characters": [
+                "Makoto Masaki",
+                "Haruko Kogetsu",
+                "Sankei Yotsuya",
+                "mysterious man"
+            ],
+            "reference": "https://asianwiki.com/I%27m_Your_Destiny"
         }
     ]
 }
