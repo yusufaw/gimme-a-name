@@ -214,6 +214,18 @@
                 "Penny Hofstadter"
             ],
             "reference": "https://www.imdb.com/title/tt0898266/"
+        },
+        {
+            "movie": "Young Sheldon",
+            "characters": [
+                "Sheldon Cooper",
+                "Mary Cooper",
+                "Missy Cooper",
+                "Georgie Cooper",
+                "George Cooper",
+                "Billy Sparks"
+            ],
+            "reference": "https://www.imdb.com/title/tt6226232/"
         }
     ]
 }
