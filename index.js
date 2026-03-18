@@ -3,18 +3,21 @@ const store = require('./src/store.js')
 
 var app = express();
 
+app.use(express.static('public'));
+
 const portAvailable = process.env.PORT || 3000
 app.listen(portAvailable, function () {
     console.log('Listening on port ' + portAvailable);
 });
 
-app.get('/', function (req, res) {
+app.get('/api/name', function (req, res) {
     store.getListEvent((result) => {
         const randomMovie = between(0, result.names.length - 1);
         const randomcharacter = between(0, result.names[randomMovie].characters.length - 1);
-        const nameResult = result.names[randomMovie].characters[randomcharacter];
-        console.log(nameResult);
-        res.send(nameResult);
+        res.json({
+            name: result.names[randomMovie].characters[randomcharacter],
+            movie: result.names[randomMovie].movie,
+        });
     })
 });
 

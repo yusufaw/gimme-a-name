@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gimme a Name</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f0f13;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: #fff;
+    }
+
+    .card {
+      text-align: center;
+      padding: 3rem 2.5rem;
+      background: #1a1a24;
+      border: 1px solid #2e2e42;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    }
+
+    .label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #6b6b8d;
+      margin-bottom: 1.5rem;
+    }
+
+    .name {
+      font-size: 2.75rem;
+      font-weight: 700;
+      line-height: 1.15;
+      min-height: 3.5rem;
+      color: #fff;
+      transition: opacity 0.2s;
+    }
+
+    .name.loading { opacity: 0.3; }
+
+    .source {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      color: #6b6b8d;
+      min-height: 1.25rem;
+      transition: opacity 0.2s;
+    }
+
+    .source.loading { opacity: 0; }
+
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+      justify-content: center;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.1s, opacity 0.1s;
+    }
+
+    button:active { transform: scale(0.97); }
+
+    .btn-generate {
+      background: #6c63ff;
+      color: #fff;
+      flex: 1;
+    }
+
+    .btn-generate:hover { opacity: 0.88; }
+
+    .btn-copy {
+      background: #2e2e42;
+      color: #c9c9e0;
+      flex: 1;
+    }
+
+    .btn-copy:hover { background: #38384f; }
+
+    .btn-copy.copied {
+      background: #1f3d2e;
+      color: #4ade80;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <p class="label">Your random name</p>
+    <div class="name" id="name">—</div>
+    <div class="source" id="source"></div>
+    <div class="actions">
+      <button class="btn-generate" id="btnGenerate">Generate</button>
+      <button class="btn-copy" id="btnCopy">Copy</button>
+    </div>
+  </div>
+
+  <script>
+    const nameEl = document.getElementById('name');
+    const sourceEl = document.getElementById('source');
+    const btnGenerate = document.getElementById('btnGenerate');
+    const btnCopy = document.getElementById('btnCopy');
+
+    let currentName = '';
+
+    async function generateName() {
+      nameEl.classList.add('loading');
+      sourceEl.classList.add('loading');
+      btnGenerate.disabled = true;
+
+      try {
+        const res = await fetch('/api/name');
+        const data = await res.json();
+        currentName = data.name;
+        nameEl.textContent = data.name;
+        sourceEl.textContent = data.movie;
+      } catch (e) {
+        nameEl.textContent = 'Error';
+        sourceEl.textContent = 'Could not fetch a name.';
+      } finally {
+        nameEl.classList.remove('loading');
+        sourceEl.classList.remove('loading');
+        btnGenerate.disabled = false;
+      }
+    }
+
+    btnGenerate.addEventListener('click', generateName);
+
+    btnCopy.addEventListener('click', () => {
+      if (!currentName) return;
+      navigator.clipboard.writeText(currentName).then(() => {
+        btnCopy.textContent = 'Copied!';
+        btnCopy.classList.add('copied');
+        setTimeout(() => {
+          btnCopy.textContent = 'Copy';
+          btnCopy.classList.remove('copied');
+        }, 2000);
+      });
+    });
+
+    generateName();
+  </script>
+</body>
+</html>
