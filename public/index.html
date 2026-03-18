@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gimme a Name</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -12,48 +13,82 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #0f0f13;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      color: #fff;
+      background: linear-gradient(135deg, #fff7ed 0%, #fef3f8 50%, #eff6ff 100%);
+      font-family: 'Nunito', system-ui, sans-serif;
+      color: #1e1e2e;
     }
 
     .card {
       text-align: center;
       padding: 3rem 2.5rem;
-      background: #1a1a24;
-      border: 1px solid #2e2e42;
-      border-radius: 20px;
+      background: #fff;
+      border-radius: 24px;
       width: 100%;
       max-width: 480px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
+    }
+
+    .emoji {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
 
     .label {
       font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #6b6b8d;
-      margin-bottom: 1.5rem;
+      color: #a0a0b8;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
     }
 
     .name {
       font-size: 2.75rem;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.15;
       min-height: 3.5rem;
-      color: #fff;
+      background: linear-gradient(135deg, #f97316, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       transition: opacity 0.2s;
     }
 
-    .name.loading { opacity: 0.3; }
+    .name.loading { opacity: 0.25; }
 
     .source {
       margin-top: 0.75rem;
       font-size: 0.875rem;
-      color: #6b6b8d;
+      color: #a0a0b8;
+      font-weight: 600;
       min-height: 1.25rem;
       transition: opacity 0.2s;
     }
+
+    .source a {
+      color: #f97316;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .source a:hover { text-decoration: underline; }
 
     .source.loading { opacity: 0; }
 
@@ -65,47 +100,62 @@
     }
 
     button {
-      padding: 0.75rem 1.5rem;
-      border-radius: 10px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 700;
       cursor: pointer;
       border: none;
-      transition: transform 0.1s, opacity 0.1s;
+      font-family: inherit;
+      transition: transform 0.15s, box-shadow 0.15s;
+      flex: 1;
     }
 
-    button:active { transform: scale(0.97); }
+    button:active { transform: scale(0.96); }
 
     .btn-generate {
-      background: #6c63ff;
+      background: linear-gradient(135deg, #f97316, #ec4899);
       color: #fff;
-      flex: 1;
+      box-shadow: 0 4px 14px rgba(249,115,22,0.35);
     }
 
-    .btn-generate:hover { opacity: 0.88; }
+    .btn-generate:hover {
+      box-shadow: 0 6px 20px rgba(249,115,22,0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-generate:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
 
     .btn-copy {
-      background: #2e2e42;
-      color: #c9c9e0;
-      flex: 1;
+      background: #f5f5fa;
+      color: #6b6b8d;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     }
 
-    .btn-copy:hover { background: #38384f; }
+    .btn-copy:hover {
+      background: #ededf5;
+      transform: translateY(-1px);
+    }
 
     .btn-copy.copied {
-      background: #1f3d2e;
-      color: #4ade80;
+      background: #ecfdf5;
+      color: #16a34a;
     }
   </style>
 </head>
 <body>
   <div class="card">
+    <span class="emoji">✨</span>
     <p class="label">Your random name</p>
     <div class="name" id="name">—</div>
     <div class="source" id="source"></div>
     <div class="actions">
-      <button class="btn-generate" id="btnGenerate">Generate</button>
-      <button class="btn-copy" id="btnCopy">Copy</button>
+      <button class="btn-generate" id="btnGenerate">🎲 Generate</button>
+      <button class="btn-copy" id="btnCopy">📋 Copy</button>
     </div>
   </div>
 
@@ -127,7 +177,11 @@
         const data = await res.json();
         currentName = data.name;
         nameEl.textContent = data.name;
-        sourceEl.textContent = data.movie;
+        if (data.reference) {
+          sourceEl.innerHTML = `from <a href="${data.reference}" target="_blank" rel="noopener noreferrer">${data.movie}</a>`;
+        } else {
+          sourceEl.textContent = `from ${data.movie}`;
+        }
       } catch (e) {
         nameEl.textContent = 'Error';
         sourceEl.textContent = 'Could not fetch a name.';
@@ -143,10 +197,10 @@
     btnCopy.addEventListener('click', () => {
       if (!currentName) return;
       navigator.clipboard.writeText(currentName).then(() => {
-        btnCopy.textContent = 'Copied!';
+        btnCopy.textContent = '✅ Copied!';
         btnCopy.classList.add('copied');
         setTimeout(() => {
-          btnCopy.textContent = 'Copy';
+          btnCopy.textContent = '📋 Copy';
           btnCopy.classList.remove('copied');
         }, 2000);
       });
