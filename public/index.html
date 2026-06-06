@@ -4,123 +4,155 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gimme a Name</title>
+  <link rel="stylesheet" href="https://cdn.yusufaw.me/theme.css" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --page: #f7f5f0;
+      --panel: rgba(255, 255, 255, 0.88);
+      --ink: #142326;
+      --muted: #6a777a;
+      --line: rgba(20, 35, 38, 0.12);
+      --warm: #c47d39;
+    }
 
     body {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #fff7ed 0%, #fef3f8 50%, #eff6ff 100%);
+      padding: 2rem;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(var(--accent-rgb, 42, 115, 126), 0.14), transparent 28rem),
+        radial-gradient(circle at 84% 72%, rgba(196, 125, 57, 0.12), transparent 24rem),
+        linear-gradient(145deg, #fbfaf6 0%, var(--page) 52%, #eef4f3 100%);
       font-family: 'Nunito', system-ui, sans-serif;
-      color: #1e1e2e;
+      color: var(--ink);
     }
 
     .card {
-      text-align: center;
-      padding: 3rem 2.5rem;
-      background: #fff;
-      border-radius: 24px;
+      padding: 2.75rem;
+      background: var(--panel);
+      border: 1px solid rgba(var(--accent-rgb, 42, 115, 126), 0.18);
+      border-radius: 8px;
       width: 100%;
-      max-width: 480px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+      max-width: 560px;
+      box-shadow: 0 28px 70px rgba(20, 35, 38, 0.16), 0 8px 20px rgba(20, 35, 38, 0.08);
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(18px);
     }
 
     .card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 5px;
-      background: linear-gradient(90deg, #f97316, #ec4899, #8b5cf6, #3b82f6);
+      inset: 0;
+      border-top: 4px solid var(--accent, #2a737e);
+      pointer-events: none;
     }
 
-    .emoji {
-      font-size: 2.5rem;
-      margin-bottom: 0.75rem;
-      display: block;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
     }
 
     .label {
       font-size: 0.75rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #a0a0b8;
-      font-weight: 600;
-      margin-bottom: 1.25rem;
+      color: var(--accent, #2a737e);
+      font-weight: 800;
+    }
+
+    .mark {
+      width: 2.25rem;
+      height: 2.25rem;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--accent-border, #c2dbdf);
+      border-radius: 8px;
+      color: var(--accent, #2a737e);
+      background: var(--accent-soft, #e2eef0);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .result {
+      padding: 0 0 2rem;
+      border-bottom: 1px solid var(--line);
     }
 
     .name {
-      font-size: 2.75rem;
+      font-size: clamp(2.6rem, 8vw, 4.5rem);
       font-weight: 800;
-      line-height: 1.15;
-      min-height: 3.5rem;
-      background: linear-gradient(135deg, #f97316, #ec4899);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      line-height: 0.95;
+      min-height: 4.5rem;
+      color: var(--ink);
+      overflow-wrap: anywhere;
       transition: opacity 0.2s;
     }
 
     .name.loading { opacity: 0.25; }
 
     .source {
-      margin-top: 0.75rem;
-      font-size: 0.875rem;
-      color: #a0a0b8;
-      font-weight: 600;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 700;
       min-height: 1.25rem;
       transition: opacity 0.2s;
     }
 
     .source a {
-      color: #f97316;
+      color: var(--accent, #2a737e);
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 800;
+      border-bottom: 1px solid rgba(var(--accent-rgb, 42, 115, 126), 0.28);
     }
 
-    .source a:hover { text-decoration: underline; }
+    .source a:hover { color: var(--accent-hover, #235f69); }
 
     .source.loading { opacity: 0; }
 
     .actions {
       display: flex;
-      gap: 0.75rem;
-      margin-top: 2.5rem;
-      justify-content: center;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
     }
 
     button {
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
+      min-height: 3rem;
+      padding: 0.8rem 1.1rem;
+      border-radius: 8px;
       font-size: 0.95rem;
       font-weight: 700;
       cursor: pointer;
-      border: none;
+      border: 1px solid transparent;
       font-family: inherit;
-      transition: transform 0.15s, box-shadow 0.15s;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s, border-color 0.15s;
       flex: 1;
     }
 
     button:active { transform: scale(0.96); }
+    button:focus-visible {
+      outline: 3px solid rgba(var(--accent-rgb, 42, 115, 126), 0.26);
+      outline-offset: 2px;
+    }
 
     .btn-generate {
-      background: linear-gradient(135deg, #f97316, #ec4899);
+      background: var(--accent, #2a737e);
       color: #fff;
-      box-shadow: 0 4px 14px rgba(249,115,22,0.35);
+      box-shadow: 0 10px 24px rgba(var(--accent-rgb, 42, 115, 126), 0.28);
     }
 
     .btn-generate:hover {
-      box-shadow: 0 6px 20px rgba(249,115,22,0.45);
+      background: var(--accent-hover, #235f69);
+      box-shadow: 0 14px 28px rgba(var(--accent-rgb, 42, 115, 126), 0.32);
       transform: translateY(-1px);
     }
 
@@ -131,31 +163,44 @@
     }
 
     .btn-copy {
-      background: #f5f5fa;
-      color: #6b6b8d;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--accent, #2a737e);
+      border-color: var(--accent-border, #c2dbdf);
     }
 
     .btn-copy:hover {
-      background: #ededf5;
+      background: var(--accent-soft, #e2eef0);
       transform: translateY(-1px);
     }
 
     .btn-copy.copied {
-      background: #ecfdf5;
-      color: #16a34a;
+      background: #f7efe5;
+      color: var(--warm);
+      border-color: rgba(196, 125, 57, 0.32);
+    }
+
+    @media (max-width: 520px) {
+      body { padding: 1rem; }
+      .card { padding: 2rem 1.25rem; }
+      .masthead { margin-bottom: 2rem; }
+      .actions { flex-direction: column; }
+      .name { min-height: 3.25rem; }
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <span class="emoji">✨</span>
-    <p class="label">Your random name</p>
-    <div class="name" id="name">—</div>
-    <div class="source" id="source"></div>
+    <div class="masthead">
+      <p class="label">Gimme a Name</p>
+      <span class="mark" aria-hidden="true">GN</span>
+    </div>
+    <div class="result">
+      <div class="name" id="name">—</div>
+      <div class="source" id="source"></div>
+    </div>
     <div class="actions">
-      <button class="btn-generate" id="btnGenerate">🎲 Generate</button>
-      <button class="btn-copy" id="btnCopy">📋 Copy</button>
+      <button class="btn-generate" id="btnGenerate">Generate</button>
+      <button class="btn-copy" id="btnCopy">Copy</button>
     </div>
   </div>
 
@@ -197,10 +242,10 @@
     btnCopy.addEventListener('click', () => {
       if (!currentName) return;
       navigator.clipboard.writeText(currentName).then(() => {
-        btnCopy.textContent = '✅ Copied!';
+        btnCopy.textContent = 'Copied';
         btnCopy.classList.add('copied');
         setTimeout(() => {
-          btnCopy.textContent = '📋 Copy';
+          btnCopy.textContent = 'Copy';
           btnCopy.classList.remove('copied');
         }, 2000);
       });
